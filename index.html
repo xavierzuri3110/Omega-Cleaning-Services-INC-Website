@@ -474,6 +474,99 @@
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(245,197,24,0.3), transparent);
     }
+
+    /* ══════════════════════════════════
+       MOBILE RESPONSIVE
+    ══════════════════════════════════ */
+    @media (max-width: 767px) {
+
+      /* Nav: hide desktop links, show hamburger */
+      nav[aria-label="Main navigation"] { display: none !important; }
+      #hamburger { display: flex !important; }
+
+      /* Hero: reduce top padding, shrink decorative Ω */
+      #hero-section { padding-top: 72px !important; padding-bottom: 4rem !important; }
+      #hero-content { padding: 2rem 1.25rem !important; }
+      .omega-animated { font-size: min(80vw, 320px) !important; right: -10% !important; opacity: 0.6; }
+      .hero-ctas { flex-direction: column !important; }
+      .hero-ctas a { width: 100% !important; justify-content: center !important; }
+      .hero-trust { gap: 1rem !important; margin-top: 2.5rem !important; }
+
+      /* Stats bar: 2×2 grid, remove side borders */
+      .stat-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+      /* Services grid: single column */
+      #services > div > div:last-child {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Why Us: stack columns */
+      #why-us > div > div {
+        grid-template-columns: 1fr !important;
+        gap: 2.5rem !important;
+      }
+
+      /* Pricing grid: single column */
+      #pricing > div > div:nth-child(2) {
+        grid-template-columns: 1fr !important;
+      }
+      /* Pricing callout: stack */
+      #pricing .reveal[style*="flex-wrap"] {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+      }
+
+      /* Service Areas: stack */
+      #areas > div > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+      }
+
+      /* Testimonials grid: single column */
+      #testimonials > div > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Contact form: stack name fields */
+      #contact div[style*="display:grid"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Buttons full-width in forms */
+      .btn-primary, .btn-outline {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Section padding: reduce vertical space */
+      section[style*="padding:6rem"] {
+        padding-top: 4rem !important;
+        padding-bottom: 4rem !important;
+      }
+
+      /* Reduce heading sizes */
+      h2[style*="clamp"] { letter-spacing: -0.02em !important; }
+
+      /* Why-Us button */
+      #why-us .btn-primary { width: auto !important; }
+
+      /* Scroll indicator: hide on mobile to avoid overlap */
+      .scroll-indicator { display: none !important; }
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      /* Tablet: 2-col services, stack why-us */
+      #services > div > div:last-child {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      #why-us > div > div {
+        grid-template-columns: 1fr !important;
+        gap: 2.5rem !important;
+      }
+      #testimonials > div > div[style*="grid-template-columns"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -519,7 +612,8 @@
     <a href="#services" class="nav-link" style="padding:0.875rem 0;border-bottom:1px solid rgba(18,89,176,0.15);" onclick="toggleMenu()">Services</a>
     <a href="#why-us"   class="nav-link" style="padding:0.875rem 0;border-bottom:1px solid rgba(18,89,176,0.15);" onclick="toggleMenu()">Why Us</a>
     <a href="#pricing"  class="nav-link" style="padding:0.875rem 0;border-bottom:1px solid rgba(18,89,176,0.15);" onclick="toggleMenu()">Pricing</a>
-    <a href="#areas"    class="nav-link" style="padding:0.875rem 0;border-bottom:1px solid rgba(18,89,176,0.15);" onclick="toggleMenu()">Areas</a>
+    <a href="#areas"         class="nav-link" style="padding:0.875rem 0;border-bottom:1px solid rgba(18,89,176,0.15);" onclick="toggleMenu()">Areas</a>
+    <a href="#testimonials"  class="nav-link" style="padding:0.875rem 0;border-bottom:1px solid rgba(18,89,176,0.15);" onclick="toggleMenu()">Reviews</a>
     <a href="#contact"  class="btn-primary" style="margin-top:1rem;justify-content:center;" onclick="toggleMenu()">Get a Quote</a>
   </div>
 </header>
