@@ -387,19 +387,7 @@
        SERVICE CARD GLOW
     ══════════════════════════════════ */
     .service-card::after {
-      content: '';
-      position: absolute; inset: -1px;
-      border-radius: 13px;
-      background: linear-gradient(120deg, #F5C518 0%, #1259B0 40%, #F5C518 80%, #D4A800 100%);
-      background-size: 200% 200%;
-      opacity: 0;
-      z-index: -1;
-      transition: opacity 0.3s ease;
-      animation: borderSweep 3s linear infinite paused;
-    }
-    .service-card:hover::after {
-      opacity: 0.5;
-      animation-play-state: running;
+      content: none;
     }
     .service-card:hover {
       transform: translateY(-8px);
