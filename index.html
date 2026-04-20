@@ -410,6 +410,35 @@
     }
 
     /* ══════════════════════════════════
+       AREA SLOT GLOW
+    ══════════════════════════════════ */
+    .area-slot {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+    .area-slot::after {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 8px;
+      background: radial-gradient(ellipse at 50% 110%, rgba(245,197,24,0.45) 0%, rgba(245,197,24,0.18) 35%, rgba(18,89,176,0.15) 60%, transparent 80%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .area-slot:hover::after { opacity: 1; }
+    .area-slot:hover {
+      transform: translateY(-4px);
+      border-color: rgba(245,197,24,0.4) !important;
+      box-shadow:
+        0 0 0 1px rgba(245,197,24,0.18),
+        0 12px 36px rgba(18,89,176,0.35),
+        0 6px 20px rgba(245,197,24,0.1),
+        0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    /* ══════════════════════════════════
        BUTTON RIPPLE
     ══════════════════════════════════ */
     .btn-primary, .btn-outline { position: relative; overflow: hidden; }
@@ -1043,42 +1072,42 @@
         </p>
 
         <div class="reveal" style="display:flex;flex-direction:column;gap:0.875rem;">
-          <div style="display:flex;align-items:center;gap:0.875rem;padding:1rem 1.25rem;background:rgba(18,89,176,0.12);border:1px solid rgba(18,89,176,0.25);border-radius:8px;">
+          <div class="area-slot" style="display:flex;align-items:center;gap:0.875rem;padding:1rem 1.25rem;background:rgba(18,89,176,0.12);border:1px solid rgba(18,89,176,0.25);border-radius:8px;">
             <svg width="20" height="20" fill="none" stroke="#F5C518" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             <div>
               <div style="font-weight:600;color:#fff;font-size:0.9375rem;">Nassau, NY</div>
               <div style="font-size:0.8125rem;color:rgba(232,240,254,0.5);">Primary service area</div>
             </div>
           </div>
-          <div style="display:flex;align-items:center;gap:0.875rem;padding:1rem 1.25rem;background:rgba(18,89,176,0.12);border:1px solid rgba(18,89,176,0.25);border-radius:8px;">
+          <div class="area-slot" style="display:flex;align-items:center;gap:0.875rem;padding:1rem 1.25rem;background:rgba(18,89,176,0.12);border:1px solid rgba(18,89,176,0.25);border-radius:8px;">
             <svg width="20" height="20" fill="none" stroke="#F5C518" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             <div>
               <div style="font-weight:600;color:#fff;font-size:0.9375rem;">Suffolk, NY</div>
               <div style="font-size:0.8125rem;color:rgba(232,240,254,0.5);">Primary service area</div>
             </div>
           </div>
-          <div style="display:flex;align-items:center;gap:0.875rem;padding:1rem 1.25rem;background:rgba(18,89,176,0.12);border:1px solid rgba(18,89,176,0.25);border-radius:8px;">
+          <div class="area-slot" style="display:flex;align-items:center;gap:0.875rem;padding:1rem 1.25rem;background:rgba(18,89,176,0.12);border:1px solid rgba(18,89,176,0.25);border-radius:8px;">
             <svg width="20" height="20" fill="none" stroke="#F5C518" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             <div>
               <div style="font-weight:600;color:#fff;font-size:0.9375rem;">Queens, NY</div>
               <div style="font-size:0.8125rem;color:rgba(232,240,254,0.5);">Primary service area</div>
             </div>
           </div>
-          <div style="display:flex;align-items:center;gap:0.875rem;padding:1rem 1.25rem;background:rgba(18,89,176,0.12);border:1px solid rgba(18,89,176,0.25);border-radius:8px;">
+          <div class="area-slot" style="display:flex;align-items:center;gap:0.875rem;padding:1rem 1.25rem;background:rgba(18,89,176,0.12);border:1px solid rgba(18,89,176,0.25);border-radius:8px;">
             <svg width="20" height="20" fill="none" stroke="#F5C518" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             <div>
               <div style="font-weight:600;color:#fff;font-size:0.9375rem;">Brooklyn, NY</div>
               <div style="font-size:0.8125rem;color:rgba(232,240,254,0.5);">Primary service area</div>
             </div>
           </div>
-          <div style="display:flex;align-items:center;gap:0.875rem;padding:1rem 1.25rem;background:rgba(18,89,176,0.12);border:1px solid rgba(18,89,176,0.25);border-radius:8px;">
+          <div class="area-slot" style="display:flex;align-items:center;gap:0.875rem;padding:1rem 1.25rem;background:rgba(18,89,176,0.12);border:1px solid rgba(18,89,176,0.25);border-radius:8px;">
             <svg width="20" height="20" fill="none" stroke="#F5C518" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             <div>
               <div style="font-weight:600;color:#fff;font-size:0.9375rem;">Manhattan, NY</div>
               <div style="font-size:0.8125rem;color:rgba(232,240,254,0.5);">Primary service area</div>
             </div>
           </div>
-          <div style="display:flex;align-items:center;gap:0.875rem;padding:1rem 1.25rem;background:rgba(18,89,176,0.07);border:1px solid rgba(18,89,176,0.18);border-radius:8px;">
+          <div class="area-slot" style="display:flex;align-items:center;gap:0.875rem;padding:1rem 1.25rem;background:rgba(18,89,176,0.07);border:1px solid rgba(18,89,176,0.18);border-radius:8px;">
             <svg width="20" height="20" fill="none" stroke="rgba(232,240,254,0.4)" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 11.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
             <div>
               <div style="font-weight:600;color:rgba(232,240,254,0.65);font-size:0.9375rem;">Beyond These Areas</div>
@@ -1431,6 +1460,7 @@
           <li><a href="#services" style="color:rgba(232,240,254,0.5);text-decoration:none;font-size:0.875rem;transition:color 0.2s ease;" onmouseover="this.style.color='#e8f0fe'" onmouseout="this.style.color='rgba(232,240,254,0.5)'">Flooring Services</a></li>
           <li><a href="#services" style="color:rgba(232,240,254,0.5);text-decoration:none;font-size:0.875rem;transition:color 0.2s ease;" onmouseover="this.style.color='#e8f0fe'" onmouseout="this.style.color='rgba(232,240,254,0.5)'">Event Cleanup</a></li>
           <li><a href="#services" style="color:rgba(232,240,254,0.5);text-decoration:none;font-size:0.875rem;transition:color 0.2s ease;" onmouseover="this.style.color='#e8f0fe'" onmouseout="this.style.color='rgba(232,240,254,0.5)'">Specialty Cleanups</a></li>
+          <li><a href="#services" style="color:rgba(232,240,254,0.5);text-decoration:none;font-size:0.875rem;transition:color 0.2s ease;" onmouseover="this.style.color='#e8f0fe'" onmouseout="this.style.color='rgba(232,240,254,0.5)'">Guest Reception &amp; Assistance</a></li>
         </ul>
       </div>
 
