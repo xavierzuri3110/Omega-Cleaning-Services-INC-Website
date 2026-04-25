@@ -1675,11 +1675,12 @@
       if (entry.isIntersecting) {
         const siblings = [...entry.target.parentElement.querySelectorAll('.reveal')];
         const idx = siblings.indexOf(entry.target);
-        setTimeout(() => entry.target.classList.add('visible'), idx * 80);
+        // Cap stagger at 2 so no card waits longer than ~130ms regardless of grid size
+        setTimeout(() => entry.target.classList.add('visible'), Math.min(idx, 2) * 65);
         revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px 0px 80px 0px' });
   revealEls.forEach(el => revealObserver.observe(el));
 
   // ══════════════════════════════════════════════
