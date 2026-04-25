@@ -1646,10 +1646,14 @@
   // ══════════════════════════════════════════════
   const heroContent = document.getElementById('hero-content');
   const heroSection = document.getElementById('hero-section');
+  // Cache heroH so the scroll handler never triggers a forced layout read
+  let heroH = heroSection ? heroSection.offsetHeight : 0;
+  window.addEventListener('resize', () => {
+    if (heroSection) heroH = heroSection.offsetHeight;
+  }, { passive: true });
   window.addEventListener('scroll', () => {
     if (!heroContent || !heroSection) return;
     const y = window.scrollY;
-    const heroH = heroSection.offsetHeight;
     // Only apply while hero is still on screen
     if (y <= heroH) {
       const drift = Math.min(y * 0.10, 60);
