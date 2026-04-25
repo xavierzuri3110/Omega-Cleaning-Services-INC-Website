@@ -317,6 +317,16 @@
       100% { background-position:  200% center; }
     }
 
+    /* Vertical cut reveal — hero heading */
+    @keyframes vcrSlideUp {
+      from { transform: translateY(105%); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    .vcr-char {
+      display: inline-block;
+      animation: vcrSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
     /* Button ripple */
     @keyframes ripple {
       from { transform: scale(0); opacity: 0.5; }
@@ -1755,6 +1765,56 @@
     e.target.style.opacity = '0.5';
     e.target.style.pointerEvents = 'none';
   }
+
+  // ── Vertical Cut Reveal — Hero Heading ─────────────────────────────────
+  (function () {
+    const h1 = document.querySelector('.hero-title');
+    if (!h1) return;
+
+    // Build flat list of tokens: {type:'word'|'space'|'br', text, color}
+    const tokens = [];
+    h1.childNodes.forEach(node => {
+      if (node.nodeName === 'BR') {
+        tokens.push({ type: 'br' });
+        return;
+      }
+      const color = (node.nodeName === 'SPAN') ? (node.style.color || '') : '';
+      const raw   = node.textContent || '';
+      // Split on spaces but keep them as separate tokens
+      raw.split(/(\s+)/).forEach(chunk => {
+        if (!chunk) return;
+        if (/^\s+$/.test(chunk)) {
+          tokens.push({ type: 'space', text: chunk });
+        } else {
+          tokens.push({ type: 'word', text: chunk, color });
+        }
+      });
+    });
+
+    const STAGGER = 0.032;
+    let charIdx = 0;
+    let html = '';
+
+    tokens.forEach(tok => {
+      if (tok.type === 'br') { html += '<br/>'; return; }
+      if (tok.type === 'space') { html += tok.text; return; }
+
+      // Wrap the whole word in a nowrap container so it never breaks mid-word
+      html += `<span style="display:inline-block;white-space:nowrap;">`;
+      Array.from(tok.text).forEach(ch => {
+        const delay = (charIdx * STAGGER).toFixed(3);
+        const color = tok.color ? `color:${tok.color};` : '';
+        html +=
+          `<span style="display:inline-block;overflow:hidden;vertical-align:bottom;line-height:inherit;">` +
+          `<span class="vcr-char" style="${color}animation-delay:${delay}s;">${ch}</span>` +
+          `</span>`;
+        charIdx++;
+      });
+      html += `</span>`;
+    });
+
+    h1.innerHTML = html;
+  })();
 </script>
 
 </body>
