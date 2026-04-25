@@ -1784,7 +1784,7 @@
           const delay = (baseDelay + charIdx * STAGGER).toFixed(3);
           const color2 = color ? `color:${color};` : '';
           html +=
-            `<span style="display:inline-block;overflow:hidden;vertical-align:bottom;line-height:inherit;">` +
+            `<span style="display:inline-block;overflow:hidden;vertical-align:bottom;line-height:inherit;padding-bottom:0.2em;margin-bottom:-0.2em;">` +
             `<span class="vcr-char" style="${color2}animation-delay:${delay}s;">${ch}</span>` +
             `</span>`;
           charIdx++;
