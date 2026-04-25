@@ -847,7 +847,7 @@
         <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#F5C518;">What We Do</span>
         <div class="gold-line"></div>
       </div>
-      <h2 class="font-display" style="font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-0.03em;color:#fff;margin-bottom:1rem;">
+      <h2 class="font-display vcr-section-title" style="font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-0.03em;color:#fff;margin-bottom:1rem;">
         Tailored Commercial Solutions
       </h2>
       <p style="max-width:540px;margin:0 auto;font-size:1rem;line-height:1.75;color:rgba(232,240,254,0.6);">
@@ -1766,54 +1766,71 @@
     e.target.style.pointerEvents = 'none';
   }
 
-  // ── Vertical Cut Reveal — Hero Heading ─────────────────────────────────
-  (function () {
-    const h1 = document.querySelector('.hero-title');
-    if (!h1) return;
-
-    // Build flat list of tokens: {type:'word'|'space'|'br', text, color}
-    const tokens = [];
-    h1.childNodes.forEach(node => {
-      if (node.nodeName === 'BR') {
-        tokens.push({ type: 'br' });
-        return;
-      }
-      const color = (node.nodeName === 'SPAN') ? (node.style.color || '') : '';
-      const raw   = node.textContent || '';
-      // Split on spaces but keep them as separate tokens
-      raw.split(/(\s+)/).forEach(chunk => {
-        if (!chunk) return;
-        if (/^\s+$/.test(chunk)) {
-          tokens.push({ type: 'space', text: chunk });
-        } else {
-          tokens.push({ type: 'word', text: chunk, color });
-        }
-      });
-    });
-
+  // ── Vertical Cut Reveal — shared helper ────────────────────────────────
+  function applyVCR(el, baseDelay) {
     const STAGGER = 0.032;
     let charIdx = 0;
     let html = '';
 
-    tokens.forEach(tok => {
-      if (tok.type === 'br') { html += '<br/>'; return; }
-      if (tok.type === 'space') { html += tok.text; return; }
-
-      // Wrap the whole word in a nowrap container so it never breaks mid-word
-      html += `<span style="display:inline-block;white-space:nowrap;">`;
-      Array.from(tok.text).forEach(ch => {
-        const delay = (charIdx * STAGGER).toFixed(3);
-        const color = tok.color ? `color:${tok.color};` : '';
-        html +=
-          `<span style="display:inline-block;overflow:hidden;vertical-align:bottom;line-height:inherit;">` +
-          `<span class="vcr-char" style="${color}animation-delay:${delay}s;">${ch}</span>` +
-          `</span>`;
-        charIdx++;
+    el.childNodes.forEach(node => {
+      if (node.nodeName === 'BR') { html += '<br/>'; return; }
+      const color = (node.nodeName === 'SPAN') ? (node.style.color || '') : '';
+      const raw   = node.textContent || '';
+      raw.split(/(\s+)/).forEach(chunk => {
+        if (!chunk) return;
+        if (/^\s+$/.test(chunk)) { html += chunk; return; }
+        html += `<span style="display:inline-block;white-space:nowrap;">`;
+        Array.from(chunk).forEach(ch => {
+          const delay = (baseDelay + charIdx * STAGGER).toFixed(3);
+          const color2 = color ? `color:${color};` : '';
+          html +=
+            `<span style="display:inline-block;overflow:hidden;vertical-align:bottom;line-height:inherit;">` +
+            `<span class="vcr-char" style="${color2}animation-delay:${delay}s;">${ch}</span>` +
+            `</span>`;
+          charIdx++;
+        });
+        html += `</span>`;
       });
-      html += `</span>`;
     });
 
-    h1.innerHTML = html;
+    el.innerHTML = html;
+  }
+
+  // ── Vertical Cut Reveal — Hero Heading (fires immediately) ─────────────
+  (function () {
+    const h1 = document.querySelector('.hero-title');
+    if (!h1) return;
+    applyVCR(h1, 0);
+  })();
+
+  // ── Vertical Cut Reveal — Section Headings (fires on scroll into view) ──
+  (function () {
+    const targets = document.querySelectorAll('.vcr-section-title');
+    if (!targets.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+        // Reset chars so animation replays from hidden state
+        entry.target.querySelectorAll('.vcr-char').forEach(c => {
+          c.style.animationName = 'none';
+        });
+        // Small timeout lets browser repaint before re-triggering
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            applyVCR(entry.target, 0);
+          });
+        });
+      });
+    }, { threshold: 0.3 });
+
+    targets.forEach(el => {
+      // Pre-hide the text until it scrolls into view
+      applyVCR(el, 9999); // delay so far out chars stay hidden
+      // Then re-run properly when visible
+      observer.observe(el);
+    });
   })();
 </script>
 
