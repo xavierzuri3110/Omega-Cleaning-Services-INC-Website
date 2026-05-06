@@ -448,6 +448,90 @@
     }
 
     /* ══════════════════════════════════
+       TOUCH — .touched mirrors every :hover state
+       Applied by JS on touchstart, removed after 350ms linger
+    ══════════════════════════════════ */
+    .service-card.touched {
+      transform: translateY(-8px);
+      border-color: rgba(245,197,24,0.4);
+      box-shadow:
+        0 0 0 1px rgba(245,197,24,0.18),
+        0 20px 60px rgba(18,89,176,0.4),
+        0 8px 32px rgba(245,197,24,0.12),
+        0 4px 16px rgba(0,0,0,0.5);
+    }
+    .service-card.touched::before { opacity: 1; }
+    .service-card.touched::after  { opacity: 1; }
+
+    .product-card.touched {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 32px rgba(18,89,176,0.3), 0 2px 8px rgba(0,0,0,0.4);
+      border-color: rgba(245,197,24,0.35) !important;
+    }
+
+    .testimonial-card.touched {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(6,22,43,0.08), 0 16px 48px rgba(18,89,176,0.12);
+    }
+
+    .why-card.touched {
+      background: rgba(18,89,176,0.15);
+      border-color: rgba(245,197,24,0.25);
+    }
+
+    .stat-badge.touched {
+      transform: translateY(-6px);
+      border-color: rgba(245,197,24,0.6);
+      background: linear-gradient(160deg, rgba(18,89,176,0.35) 0%, rgba(6,22,43,0.75) 100%);
+      box-shadow: 0 8px 32px rgba(18,89,176,0.25), 0 0 0 1px rgba(245,197,24,0.15);
+    }
+
+    /* Mobile nav touch feedback */
+    #mobile-menu .nav-link.touched { color: #F5C518; }
+    #mobile-menu .nav-link.touched::after { transform: scaleX(1); }
+
+    /* ══════════════════════════════════
+       TOUCH DEVICES — suppress :hover ghost states
+       On pointer:coarse (finger), :hover fires & sticks.
+       We reset all hover transforms; .touched handles it.
+    ══════════════════════════════════ */
+    @media (hover: none) and (pointer: coarse) {
+      .service-card:hover {
+        transform: none;
+        box-shadow: none;
+        border-color: rgba(18,89,176,0.25);
+      }
+      .service-card:hover::before { opacity: 0; }
+      .service-card:hover::after  { opacity: 0; }
+
+      .product-card:hover {
+        transform: none;
+        box-shadow: none;
+        border-color: rgba(18,89,176,0.2) !important;
+      }
+
+      .testimonial-card:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      .why-card:hover {
+        background: rgba(18,89,176,0.08);
+        border-color: rgba(18,89,176,0.2);
+      }
+
+      .stat-badge:hover {
+        transform: none;
+        border-color: rgba(245,197,24,0.2);
+        background: linear-gradient(160deg, rgba(18,89,176,0.2) 0%, rgba(6,22,43,0.6) 100%);
+        box-shadow: none;
+      }
+
+      .nav-link:hover { color: rgba(232,240,254,0.75); }
+      .nav-link:hover::after { transform: scaleX(0); }
+    }
+
+    /* ══════════════════════════════════
        AREA SLOT GLOW
     ══════════════════════════════════ */
     .area-slot {
@@ -1857,6 +1941,71 @@
       applyVCR(el, 9999); // delay so far out chars stay hidden
       // Then re-run properly when visible
       observer.observe(el);
+    });
+  })();
+
+  // ══════════════════════════════════════════════
+  // 10. TOUCH CARD ANIMATIONS
+  // Adds .touched on touchstart (mirrors :hover state).
+  // Scroll detection: if finger moves >8px, cancel immediately.
+  // Linger: .touched stays 350ms after finger lifts.
+  // ══════════════════════════════════════════════
+  (function initTouchCards() {
+    if (!('ontouchstart' in window)) return;
+
+    const SELECTORS = [
+      '.service-card',
+      '.product-card',
+      '.testimonial-card',
+      '.why-card',
+      '.stat-badge',
+      '#mobile-menu .nav-link',
+    ];
+    const SCROLL_THRESHOLD = 8; // px — beyond this = scroll, not tap
+    const LINGER_MS = 350;       // ms to hold .touched after finger lifts
+
+    document.querySelectorAll(SELECTORS.join(', ')).forEach(card => {
+      let startX = 0;
+      let startY = 0;
+      let scrolling = false;
+
+      card.addEventListener('touchstart', function(e) {
+        const t = e.touches[0];
+        startX   = t.clientX;
+        startY   = t.clientY;
+        scrolling = false;
+        this.classList.add('touched');
+      }, { passive: true });
+
+      card.addEventListener('touchmove', function(e) {
+        if (scrolling) return;
+        const t  = e.touches[0];
+        const dx = Math.abs(t.clientX - startX);
+        const dy = Math.abs(t.clientY - startY);
+        if (dx > SCROLL_THRESHOLD || dy > SCROLL_THRESHOLD) {
+          scrolling = true;
+          this.classList.remove('touched'); // cancel on scroll
+        }
+      }, { passive: true });
+
+      card.addEventListener('touchend', function() {
+        if (scrolling) {
+          this.classList.remove('touched');
+          return;
+        }
+        // Linger briefly after finger lifts so the effect is visible
+        const el = this;
+        if (el._lingerTimer) clearTimeout(el._lingerTimer);
+        el._lingerTimer = setTimeout(() => {
+          el.classList.remove('touched');
+          el._lingerTimer = null;
+        }, LINGER_MS);
+      }, { passive: true });
+
+      card.addEventListener('touchcancel', function() {
+        if (this._lingerTimer) clearTimeout(this._lingerTimer);
+        this.classList.remove('touched');
+      }, { passive: true });
     });
   })();
 </script>
