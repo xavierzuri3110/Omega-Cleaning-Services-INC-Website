@@ -452,7 +452,7 @@
        Applied by JS on touchstart, removed after 350ms linger
     ══════════════════════════════════ */
     .service-card.touched {
-      transform: translateY(-8px);
+      transform: translateY(-8px) !important;
       border-color: rgba(245,197,24,0.4);
       box-shadow:
         0 0 0 1px rgba(245,197,24,0.18),
@@ -464,13 +464,13 @@
     .service-card.touched::after  { opacity: 1; }
 
     .product-card.touched {
-      transform: translateY(-6px);
+      transform: translateY(-6px) !important;
       box-shadow: 0 8px 32px rgba(18,89,176,0.3), 0 2px 8px rgba(0,0,0,0.4);
       border-color: rgba(245,197,24,0.35) !important;
     }
 
     .testimonial-card.touched {
-      transform: translateY(-4px);
+      transform: translateY(-4px) !important;
       box-shadow: 0 4px 16px rgba(6,22,43,0.08), 0 16px 48px rgba(18,89,176,0.12);
     }
 
@@ -480,7 +480,7 @@
     }
 
     .stat-badge.touched {
-      transform: translateY(-6px);
+      transform: translateY(-6px) !important;
       border-color: rgba(245,197,24,0.6);
       background: linear-gradient(160deg, rgba(18,89,176,0.35) 0%, rgba(6,22,43,0.75) 100%);
       box-shadow: 0 8px 32px rgba(18,89,176,0.25), 0 0 0 1px rgba(245,197,24,0.15);
@@ -1961,7 +1961,7 @@
       '.stat-badge',
       '#mobile-menu .nav-link',
     ];
-    const SCROLL_THRESHOLD = 8; // px — beyond this = scroll, not tap
+    const SCROLL_THRESHOLD = 15; // px — beyond this = scroll, not tap
     const LINGER_MS = 350;       // ms to hold .touched after finger lifts
 
     document.querySelectorAll(SELECTORS.join(', ')).forEach(card => {
