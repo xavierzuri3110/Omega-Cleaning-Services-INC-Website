@@ -496,39 +496,41 @@
        We reset all hover transforms; .touched handles it.
     ══════════════════════════════════ */
     @media (hover: none) and (pointer: coarse) {
-      .service-card:hover {
+      /* :not(.touched) — when .touched is active, skip the reset so
+         the ghost :hover cannot cancel the touch animation mid-tap */
+      .service-card:hover:not(.touched) {
         transform: none;
         box-shadow: none;
         border-color: rgba(18,89,176,0.25);
       }
-      .service-card:hover::before { opacity: 0; }
-      .service-card:hover::after  { opacity: 0; }
+      .service-card:hover:not(.touched)::before { opacity: 0; }
+      .service-card:hover:not(.touched)::after  { opacity: 0; }
 
-      .product-card:hover {
+      .product-card:hover:not(.touched) {
         transform: none;
         box-shadow: none;
         border-color: rgba(18,89,176,0.2) !important;
       }
 
-      .testimonial-card:hover {
+      .testimonial-card:hover:not(.touched) {
         transform: none;
         box-shadow: none;
       }
 
-      .why-card:hover {
+      .why-card:hover:not(.touched) {
         background: rgba(18,89,176,0.08);
         border-color: rgba(18,89,176,0.2);
       }
 
-      .stat-badge:hover {
+      .stat-badge:hover:not(.touched) {
         transform: none;
         border-color: rgba(245,197,24,0.2);
         background: linear-gradient(160deg, rgba(18,89,176,0.2) 0%, rgba(6,22,43,0.6) 100%);
         box-shadow: none;
       }
 
-      .nav-link:hover { color: rgba(232,240,254,0.75); }
-      .nav-link:hover::after { transform: scaleX(0); }
+      .nav-link:hover:not(.touched) { color: rgba(232,240,254,0.75); }
+      .nav-link:hover:not(.touched)::after { transform: scaleX(0); }
     }
 
     /* ══════════════════════════════════
