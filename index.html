@@ -486,6 +486,17 @@
       box-shadow: 0 8px 32px rgba(18,89,176,0.25), 0 0 0 1px rgba(245,197,24,0.15);
     }
 
+    .area-slot.touched {
+      transform: translateY(-4px);
+      border-color: rgba(245,197,24,0.4) !important;
+      box-shadow:
+        0 0 0 1px rgba(245,197,24,0.18),
+        0 12px 36px rgba(18,89,176,0.35),
+        0 6px 20px rgba(245,197,24,0.1),
+        0 2px 8px rgba(0,0,0,0.4);
+    }
+    .area-slot.touched::after { opacity: 1; }
+
     /* Mobile nav touch feedback */
     #mobile-menu .nav-link.touched { color: #F5C518; }
     #mobile-menu .nav-link.touched::after { transform: scaleX(1); }
@@ -531,6 +542,13 @@
 
       .nav-link:hover:not(.touched) { color: rgba(232,240,254,0.75); }
       .nav-link:hover:not(.touched)::after { transform: scaleX(0); }
+
+      .area-slot:hover:not(.touched) {
+        transform: none;
+        border-color: rgba(18,89,176,0.25) !important;
+        box-shadow: none;
+      }
+      .area-slot:hover:not(.touched)::after { opacity: 0; }
     }
 
     /* ══════════════════════════════════
@@ -1961,6 +1979,7 @@
       '.testimonial-card',
       '.why-card',
       '.stat-badge',
+      '.area-slot',
       '#mobile-menu .nav-link',
     ];
     const SCROLL_THRESHOLD = 15; // px — beyond this = scroll, not tap
