@@ -776,6 +776,10 @@
       /* Areas map: shift centered content up so bottom hairline clears pills */
       .area-map-overlay { padding-bottom: 3rem !important; }
 
+      /* Hero Ω symbols: shrink to 100px and lower below navbar to prevent clipping */
+      .omega-animated:not(.omega-left) { font-size: 100px !important; top: 88px !important; }
+      .omega-left { font-size: 100px !important; top: 88px !important; }
+
       /* Tablet: 2-col services, stack why-us */
       #services > div > div:last-child {
         grid-template-columns: repeat(2, 1fr) !important;
