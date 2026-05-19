@@ -753,6 +753,9 @@
       /* Why-Us button */
       #why-us .btn-primary { width: auto !important; }
 
+      /* Areas map: shift centered content up so bottom hairline clears pills */
+      .area-map-overlay { padding-bottom: 4.5rem !important; }
+
       /* Scroll indicator: hide on mobile to avoid overlap */
       .scroll-indicator { display: none !important; }
 
@@ -770,6 +773,9 @@
     }
 
     @media (min-width: 768px) and (max-width: 1023px) {
+      /* Areas map: shift centered content up so bottom hairline clears pills */
+      .area-map-overlay { padding-bottom: 3rem !important; }
+
       /* Tablet: 2-col services, stack why-us */
       #services > div > div:last-child {
         grid-template-columns: repeat(2, 1fr) !important;
@@ -1228,7 +1234,7 @@
         </div>
 
         <!-- Centered description -->
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:3;">
+        <div class="area-map-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:3;">
           <div style="text-align:center;width:62%;">
             <!-- Catchphrase -->
             <p style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:rgba(232,240,254,0.75);margin:-4rem auto 1.4rem;max-width:54%;">Precision cleaning proven results</p>
