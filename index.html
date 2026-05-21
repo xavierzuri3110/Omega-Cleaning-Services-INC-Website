@@ -756,6 +756,9 @@
       /* Areas map: shift centered content up so bottom hairline clears pills */
       .area-map-overlay { padding-bottom: 4.5rem !important; }
 
+      /* Photos grid: 2 columns on mobile */
+      .photos-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.875rem !important; }
+
       /* Scroll indicator: hide on mobile to avoid overlap */
       .scroll-indicator { display: none !important; }
 
@@ -770,6 +773,37 @@
         align-items: flex-start !important;
         gap: 0.375rem !important;
       }
+    }
+
+    /* ── Photos grid ── */
+    .photos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .photo-frame {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid rgba(18,89,176,0.25);
+    }
+    .photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s cubic-bezier(0.22,1,0.36,1);
+    }
+    .photo-frame:hover .photo-img {
+      transform: scale(1.06);
+    }
+    .photo-caption {
+      margin-top: 0.75rem;
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: rgba(232,240,254,0.68);
+      text-align: center;
+      font-style: italic;
     }
 
     @media (min-width: 768px) and (max-width: 1023px) {
@@ -798,6 +832,10 @@
       #testimonials > div > div[style*="grid-template-columns"] {
         grid-template-columns: repeat(2, 1fr) !important;
       }
+
+      /* Photos grid: 2 cols, tighter gap, smaller caption on tablet */
+      .photos-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem !important; }
+      .photo-caption { font-size: 0.8rem !important; }
     }
   </style>
 </head>
@@ -821,6 +859,7 @@
       <!-- Desktop Nav -->
       <nav style="display:flex;align-items:center;gap:2rem;" aria-label="Main navigation">
         <a href="#services" class="nav-link">Services</a>
+        <a href="#photos"   class="nav-link">Photos</a>
         <a href="#why-us"   class="nav-link">Why Us</a>
         <a href="#pricing"  class="nav-link">Pricing</a>
         <a href="#areas"          class="nav-link">Areas</a>
@@ -843,6 +882,7 @@
   <!-- Mobile Menu -->
   <div id="mobile-menu" style="flex-direction:column;gap:0;padding:0 1.5rem 1.5rem;background:rgba(6,22,43,0.98);border-top:1px solid rgba(18,89,176,0.3);">
     <a href="#services" class="nav-link" style="padding:0.875rem 0;border-bottom:1px solid rgba(18,89,176,0.15);" onclick="toggleMenu()">Services</a>
+    <a href="#photos"   class="nav-link" style="padding:0.875rem 0;border-bottom:1px solid rgba(18,89,176,0.15);" onclick="toggleMenu()">Photos</a>
     <a href="#why-us"   class="nav-link" style="padding:0.875rem 0;border-bottom:1px solid rgba(18,89,176,0.15);" onclick="toggleMenu()">Why Us</a>
     <a href="#pricing"  class="nav-link" style="padding:0.875rem 0;border-bottom:1px solid rgba(18,89,176,0.15);" onclick="toggleMenu()">Pricing</a>
     <a href="#areas"         class="nav-link" style="padding:0.875rem 0;border-bottom:1px solid rgba(18,89,176,0.15);" onclick="toggleMenu()">Areas</a>
@@ -1049,6 +1089,103 @@
       </div>
 
     </div><!-- /grid -->
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     PHOTOS
+════════════════════════════════════ -->
+<section id="photos" class="section-alt" style="padding:6rem 0;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;">
+
+    <!-- Header -->
+    <div class="reveal" style="text-align:center;margin-bottom:4rem;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:0.875rem;margin-bottom:1rem;">
+        <div class="gold-line"></div>
+        <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#F5C518;">Our Team in Action</span>
+        <div class="gold-line"></div>
+      </div>
+      <h2 class="font-display vcr-section-title" style="font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-0.03em;color:#fff;margin-bottom:0;">
+        Photos
+      </h2>
+    </div>
+
+    <!-- Grid -->
+    <div class="photos-grid">
+
+      <!-- 1: Van -->
+      <div class="reveal">
+        <div class="photo-frame">
+          <img src="assets/WhatsApp Image 2026-05-17 at 16.35.01.jpeg" alt="Our branded fleet" class="photo-img" />
+        </div>
+        <p class="photo-caption">Our branded fleet: ready to bring top-tier cleaning services to you.</p>
+      </div>
+
+      <!-- 2: Front desk -->
+      <div class="reveal">
+        <div class="photo-frame">
+          <img src="assets/WhatsApp Image (6)2026-05-17 at 16.35.02.jpeg" alt="Staff cleaning front desk" class="photo-img" />
+        </div>
+        <p class="photo-caption">Detailed office cleaning for a spotless workspace.</p>
+      </div>
+
+      <!-- 3: Medical chair -->
+      <div class="reveal">
+        <div class="photo-frame">
+          <img src="assets/WhatsApp Image (5)2026-05-17 at 16.35.02.jpeg" alt="Staff cleaning medical chair" class="photo-img" />
+        </div>
+        <p class="photo-caption">Thorough medical office cleaning for a safe, sanitized environment.</p>
+      </div>
+
+      <!-- 4: Classroom -->
+      <div class="reveal">
+        <div class="photo-frame">
+          <img src="assets/WhatsApp Image (3) 2026-05-17 at 16.35.01.jpeg" alt="Staff cleaning classroom" class="photo-img" />
+        </div>
+        <p class="photo-caption">Safe and thorough cleaning for a bright classroom</p>
+      </div>
+
+      <!-- 5: Barrel -->
+      <div class="reveal">
+        <div class="photo-frame">
+          <img src="assets/WhatsApp Image (2) 2026-05-17 at 16.35.01 .jpeg" alt="Staff pushing barrel" class="photo-img" />
+        </div>
+        <p class="photo-caption">Industrial exterior cleaning—tackling every corner for a spotless finish.</p>
+      </div>
+
+      <!-- 6: Scissor lift -->
+      <div class="reveal">
+        <div class="photo-frame">
+          <img src="assets/WhatsApp Image (9)2026-05-17 at 16.35.02.jpeg" alt="Boss with scissor lift" class="photo-img" />
+        </div>
+        <p class="photo-caption">Ready for any height—precision cleaning at every level.</p>
+      </div>
+
+      <!-- 7: Cleaning cart -->
+      <div class="reveal">
+        <div class="photo-frame">
+          <img src="assets/WhatsApp Image (4) 2026-05-17 at 16.35.02.jpeg" alt="Staff pushing cleaning cart" class="photo-img" />
+        </div>
+        <p class="photo-caption">Fully equipped and ready—attention to every detail in every office.</p>
+      </div>
+
+      <!-- 8: Restroom -->
+      <div class="reveal">
+        <div class="photo-frame">
+          <img src="assets/WhatsApp Image (10)2026-05-17 at 16.35.02.jpeg" alt="Staff cleaning restroom" class="photo-img" />
+        </div>
+        <p class="photo-caption">Spotless restroom surfaces—we leave every detail gleaming.</p>
+      </div>
+
+      <!-- 9: Boss cleaning floor -->
+      <div class="reveal">
+        <div class="photo-frame">
+          <img src="assets/WhatsApp Image (7)2026-05-17 at 16.35.02.jpeg" alt="Boss cleaning floor" class="photo-img" />
+        </div>
+        <p class="photo-caption">Mid-construction cleanup—prepping every surface for the final reveal</p>
+      </div>
+
+    </div><!-- /photos-grid -->
   </div>
 </section>
 
