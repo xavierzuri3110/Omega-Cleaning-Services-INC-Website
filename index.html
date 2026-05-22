@@ -759,6 +759,9 @@
       /* Photos grid: 2 columns on mobile */
       .photos-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.875rem !important; }
 
+      /* Areas: prevent "Precision" catchphrase from clipping above card on small screens */
+      #areas .area-map-overlay p:first-child { margin-top: 0 !important; }
+
       /* Scroll indicator: hide on mobile to avoid overlap */
       .scroll-indicator { display: none !important; }
 
