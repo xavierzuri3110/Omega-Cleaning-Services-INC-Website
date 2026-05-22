@@ -813,9 +813,10 @@
       /* Areas map: shift centered content up so bottom hairline clears pills */
       .area-map-overlay { padding-bottom: 3rem !important; }
 
-      /* Hero Ω symbols: shrink to 100px and lower below navbar to prevent clipping */
-      .omega-animated:not(.omega-left) { font-size: 100px !important; top: 88px !important; }
-      .omega-left { font-size: 100px !important; top: 88px !important; }
+      /* Hero Ω symbols: shrink to 100px; top:130px ensures full glyph clears the
+         72px navbar even at the animation's peak translateY(-53%) = 130-53=77px */
+      .omega-animated:not(.omega-left) { font-size: 100px !important; top: 130px !important; }
+      .omega-left { font-size: 100px !important; top: 130px !important; }
 
       /* Tablet portrait nav: tighten gap + font so logo + all links stay visible */
       header nav[aria-label="Main navigation"] { gap: 0.625rem !important; }
