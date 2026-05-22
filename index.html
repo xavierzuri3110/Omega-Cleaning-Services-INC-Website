@@ -840,6 +840,17 @@
       .photos-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem !important; }
       .photo-caption { font-size: 0.8rem !important; }
     }
+
+    /* ══════════════════════════════════
+       iPAD LANDSCAPE — hero Ω fix
+       iPad landscape (1024–1366px) hits desktop styles
+       where omegas sit at top:72px (inside the navbar).
+       Push them down to clear the logo and Get a Quote.
+    ══════════════════════════════════ */
+    @media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+      .omega-animated:not(.omega-left) { top: 110px !important; }
+      .omega-left { top: 110px !important; }
+    }
   </style>
 </head>
 <body>
