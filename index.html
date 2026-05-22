@@ -817,6 +817,21 @@
       .omega-animated:not(.omega-left) { font-size: 100px !important; top: 88px !important; }
       .omega-left { font-size: 100px !important; top: 88px !important; }
 
+      /* Tablet portrait nav: tighten gap + font so logo + all links stay visible */
+      header nav[aria-label="Main navigation"] { gap: 0.625rem !important; }
+      header nav[aria-label="Main navigation"] .nav-link {
+        font-size: 0.7rem !important;
+        letter-spacing: 0.02em !important;
+        white-space: nowrap !important;
+      }
+      header nav[aria-label="Main navigation"] .btn-primary {
+        padding: 0.5rem 0.875rem !important;
+        font-size: 0.7rem !important;
+        white-space: nowrap !important;
+        letter-spacing: 0.04em !important;
+      }
+      .nav-logo { height: 40px !important; }
+
       /* Tablet: 2-col services, stack why-us */
       #services > div > div:last-child {
         grid-template-columns: repeat(2, 1fr) !important;
