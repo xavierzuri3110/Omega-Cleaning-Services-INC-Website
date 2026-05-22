@@ -778,6 +778,11 @@
       }
     }
 
+    /* ── Narrow Android (≤430px): push overlay content higher so bottom hairline clears pills ── */
+    @media (max-width: 430px) {
+      .area-map-overlay { padding-bottom: 8rem !important; }
+    }
+
     /* ── Photos grid ── */
     .photos-grid {
       display: grid;
