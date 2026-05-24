@@ -821,6 +821,13 @@
       /* Android only: nudge catchphrase down so it clears the top yellow border */
       .is-android #areas .area-map-overlay p:first-child { padding-top: 10px !important; }
 
+      /* Slightly enlarge gold omega symbols in areas box on mobile; nudge top up to keep visual center */
+      #areas .reveal > img[src*="gold_omega"] {
+        width: min(18vw, 140px) !important;
+        height: min(18vw, 140px) !important;
+        top: 8% !important;
+      }
+
       /* Scroll indicator: hide on mobile to avoid overlap */
       .scroll-indicator { display: none !important; }
 
