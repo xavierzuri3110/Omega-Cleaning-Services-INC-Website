@@ -940,6 +940,14 @@
       .omega-animated:not(.omega-left) { top: 110px !important; }
       .omega-left { top: 110px !important; }
     }
+
+    /* ── Desktop: narrow the Service Area map box by pulling in left and right sides ── */
+    @media (min-width: 1024px) {
+      #areas .reveal[style*="min-height:520px"] {
+        margin-left: 45px !important;
+        margin-right: 45px !important;
+      }
+    }
   </style>
 </head>
 <body>
