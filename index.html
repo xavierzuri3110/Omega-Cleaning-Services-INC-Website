@@ -818,6 +818,9 @@
       /* Areas: prevent "Precision" catchphrase from clipping above card on small screens */
       #areas .area-map-overlay p:first-child { margin-top: 0 !important; }
 
+      /* Android only: nudge catchphrase down so it clears the top yellow border */
+      .is-android #areas .area-map-overlay p:first-child { padding-top: 10px !important; }
+
       /* Scroll indicator: hide on mobile to avoid overlap */
       .scroll-indicator { display: none !important; }
 
@@ -1944,6 +1947,8 @@
   // 0. ENABLE ANIMATIONS (progressive enhancement)
   // ══════════════════════════════════════════════
   document.body.classList.add('js-ready');
+  // Tag Android devices so Android-specific CSS rules can apply
+  if (/Android/i.test(navigator.userAgent)) document.body.classList.add('is-android');
   // Immediately reveal anything already in the viewport
   document.querySelectorAll('.reveal').forEach(el => {
     const r = el.getBoundingClientRect();
