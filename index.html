@@ -887,6 +887,8 @@
       #areas .area-map-overlay p:first-child { margin-top: -1.5rem !important; }
       /* Hide bottom hairline (under "cleanups.") on tablet */
       #areas .area-map-overlay div[style*="margin-top:1.1rem"] { display: none !important; }
+      /* iPad iOS only: extra bottom padding so pills have breathing room from "large-scale cleanups." */
+      .is-ipad #areas .area-map-overlay { padding-bottom: 5rem !important; }
 
       /* Hero Ω symbols: shrink to 100px; top:130px ensures full glyph clears the
          72px navbar even at the animation's peak translateY(-53%) = 130-53=77px */
@@ -1966,6 +1968,8 @@
   document.body.classList.add('js-ready');
   // Tag Android devices so Android-specific CSS rules can apply
   if (/Android/i.test(navigator.userAgent)) document.body.classList.add('is-android');
+  // Tag iPad iOS devices (iPadOS 13+ reports as Macintosh, so check maxTouchPoints)
+  if (/iPad/i.test(navigator.userAgent) || (/Macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 1)) document.body.classList.add('is-ipad');
   // Immediately reveal anything already in the viewport
   document.querySelectorAll('.reveal').forEach(el => {
     const r = el.getBoundingClientRect();
