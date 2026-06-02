@@ -740,8 +740,8 @@
       #hero-section { padding-top: 72px !important; padding-bottom: 4rem !important; }
       #hero-content { padding: 2rem 1.25rem !important; }
       #hero-content > div { margin-left: 0 !important; max-width: 100% !important; }
-      .omega-animated:not(.omega-left) { font-size: 55px !important; right: 5% !important; top: 88px !important; opacity: 0.6; }
-      .omega-left { display: block !important; font-size: 55px !important; top: 88px !important; opacity: 0.55; }
+      .omega-hero:not(.omega-hero-left) { font-size: 55px !important; right: 5% !important; top: 88px !important; opacity: 0.6; }
+      .omega-hero-left { font-size: 55px !important; top: 88px !important; opacity: 0.55; }
       .hero-ctas { flex-direction: column !important; }
       .hero-ctas a { width: 100% !important; justify-content: center !important; }
       .hero-trust { gap: 1rem !important; margin-top: 2.5rem !important; flex-wrap: wrap !important; justify-content: flex-start !important; }
@@ -892,8 +892,8 @@
 
       /* Hero Ω symbols: shrink to 100px; top:130px ensures full glyph clears the
          72px navbar even at the animation's peak translateY(-53%) = 130-53=77px */
-      .omega-animated:not(.omega-left) { font-size: 100px !important; top: 130px !important; }
-      .omega-left { font-size: 100px !important; top: 130px !important; }
+      .omega-hero:not(.omega-hero-left) { font-size: 100px !important; top: 130px !important; }
+      .omega-hero-left { font-size: 100px !important; top: 130px !important; }
 
       /* Tablet portrait nav: tighten gap + font so logo + all links stay visible */
       header nav[aria-label="Main navigation"] { gap: 0.625rem !important; }
@@ -941,8 +941,8 @@
        Push them down to clear the logo and Get a Quote.
     ══════════════════════════════════ */
     @media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
-      .omega-animated:not(.omega-left) { top: 110px !important; }
-      .omega-left { top: 110px !important; }
+      .omega-hero:not(.omega-hero-left) { top: 110px !important; }
+      .omega-hero-left { top: 110px !important; }
     }
 
     /* ── Desktop: narrow the Service Area map box by pulling in left and right sides ── */
@@ -1021,10 +1021,10 @@
   </div>
 
   <!-- Decorative Ω — right (below "Get A Quote") -->
-  <div aria-hidden="true" style="position:absolute;right:3%;top:72px;font-size:100px;font-family:'Playfair Display',serif;font-weight:900;color:#1259B0;line-height:1;pointer-events:none;user-select:none;z-index:0;text-shadow:0 0 40px rgba(18,89,176,0.5),0 0 80px rgba(18,89,176,0.25);">Ω</div>
+  <div aria-hidden="true" class="omega-hero" style="position:absolute;right:3%;top:72px;font-size:100px;font-family:'Playfair Display',serif;font-weight:900;color:#1259B0;line-height:1;pointer-events:none;user-select:none;z-index:0;text-shadow:0 0 40px rgba(18,89,176,0.5),0 0 80px rgba(18,89,176,0.25);">Ω</div>
 
   <!-- Decorative Ω — left (below company logo) -->
-  <div aria-hidden="true" style="position:absolute;left:2%;top:72px;font-size:100px;font-family:'Playfair Display',serif;font-weight:900;color:#F5C518;line-height:1;pointer-events:none;user-select:none;z-index:0;text-shadow:0 0 40px rgba(245,197,24,0.5),0 0 80px rgba(245,197,24,0.25);">Ω</div>
+  <div aria-hidden="true" class="omega-hero omega-hero-left" style="position:absolute;left:2%;top:72px;font-size:100px;font-family:'Playfair Display',serif;font-weight:900;color:#F5C518;line-height:1;pointer-events:none;user-select:none;z-index:0;text-shadow:0 0 40px rgba(245,197,24,0.5),0 0 80px rgba(245,197,24,0.25);">Ω</div>
 
   <!-- Floating particles -->
   <div id="particles" aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"></div>
