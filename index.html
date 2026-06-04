@@ -2401,6 +2401,8 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
   (function() {
+    var isDesktop = window.innerWidth >= 1368;
+
     var map = L.map('service-map', {
       center: [40.67, -73.38],
       zoom: 9.1,
@@ -2409,11 +2411,18 @@
       zoomControl: false,
       attributionControl: false,
       scrollWheelZoom: true,
-      dragging: true,
-      touchZoom: true,
+      dragging: isDesktop,
+      touchZoom: isDesktop,
       doubleClickZoom: false,
       boxZoom: false,
       keyboard: false
+    });
+
+    /* Re-evaluate on orientation change / resize */
+    window.addEventListener('resize', function () {
+      var desktop = window.innerWidth >= 1368;
+      if (desktop) { map.dragging.enable();  map.touchZoom.enable();  }
+      else          { map.dragging.disable(); map.touchZoom.disable(); }
     });
 
     L.control.zoom({ position: 'topright' }).addTo(map);
