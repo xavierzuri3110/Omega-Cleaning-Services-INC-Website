@@ -964,11 +964,6 @@
       }
     }
 
-    /* ── Service area Leaflet map: dim dark tiles before navy overlay ── */
-    #service-map .leaflet-tile-pane {
-      filter: brightness(0.85) contrast(1.05);
-    }
-
     /* ── Branded zoom control ── */
     #service-area-map-card .leaflet-control-zoom {
       border: 1px solid #F5C518;
@@ -2428,16 +2423,8 @@
 
     L.control.zoom({ position: 'topright' }).addTo(map);
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       maxZoom: 12
-    }).addTo(map);
-
-    // Navy tint overlay above tiles, below markers
-    L.rectangle([[-90, -180], [90, 180]], {
-      color: 'transparent',
-      fillColor: '#0A1A35',
-      fillOpacity: 0.56,
-      interactive: false
     }).addTo(map);
 
     function omegaIcon(label) {
@@ -2447,7 +2434,7 @@
           + '<div style="width:36px;height:36px;border-radius:50%;background:rgba(10,20,38,0.88);border:2px solid #F2B826;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px rgba(242,184,38,0.15),0 0 16px 6px rgba(242,184,38,0.55),0 0 36px 14px rgba(242,184,38,0.22);">'
           + '<span style="color:#F2B826;font-size:17px;font-weight:700;line-height:1;font-family:Georgia,serif;text-shadow:0 0 8px rgba(242,184,38,0.8);">Ω</span>'
           + '</div>'
-          + '<div style="color:#ffffff;font-size:11.5px;font-weight:600;text-shadow:0 1px 4px rgba(0,0,0,0.9),0 0 10px rgba(0,0,0,0.6);margin-top:5px;white-space:nowrap;font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',sans-serif;letter-spacing:0.01em;">' + label + '</div>'
+          + '<div style="color:#071830;font-size:11.5px;font-weight:700;text-shadow:0 1px 3px rgba(255,255,255,0.9);margin-top:5px;white-space:nowrap;font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',sans-serif;letter-spacing:0.01em;">' + label + '</div>'
           + '</div>',
         iconSize: [90, 64],
         iconAnchor: [45, 18]
