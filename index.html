@@ -2427,6 +2427,14 @@
       maxZoom: 12
     }).addTo(map);
 
+    // Cool blue-gray tint over the light tiles
+    L.rectangle([[-90, -180], [90, 180]], {
+      color: 'transparent',
+      fillColor: '#4a8fb5',
+      fillOpacity: 0.28,
+      interactive: false
+    }).addTo(map);
+
     function omegaIcon(label) {
       return L.divIcon({
         className: '',
