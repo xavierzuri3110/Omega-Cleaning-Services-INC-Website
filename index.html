@@ -964,6 +964,18 @@
       }
     }
 
+    /* ── Service Areas: align map card bottom with "Beyond These Areas" card (tablet+) ── */
+    @media (min-width: 768px) {
+      #areas > div > div[style*="grid-template-columns"] {
+        align-items: stretch !important;
+      }
+      #service-area-map-card {
+        flex: 1 !important;
+        height: auto !important;
+        min-height: 300px !important;
+      }
+    }
+
     /* ── Branded zoom control ── */
     #service-area-map-card .leaflet-control-zoom {
       border: 1px solid #F5C518;
@@ -2465,6 +2477,9 @@
     var bounds = L.latLngBounds(boroughs.map(function(b) { return b.latlng; }));
     var pad = isDesktop ? 65 : (isTablet ? 55 : 50);
     map.fitBounds(bounds, { padding: [pad, pad] });
+
+    /* Re-measure map after flex layout settles (tablet/desktop height is flex-driven) */
+    window.requestAnimationFrame(function() { map.invalidateSize(); map.fitBounds(bounds, { padding: [pad, pad] }); });
   })();
 </script>
 
