@@ -2454,19 +2454,17 @@
       { latlng: [40.652, -73.950], label: 'Brooklyn'  },
       { latlng: [40.728, -73.810], label: 'Queens'    },
       { latlng: [40.722, -73.590], label: 'Nassau'    },
-      { latlng: isDesktop ? [40.870, -72.920] : [40.760, -73.420], label: 'Suffolk' }
+      { latlng: [40.760, -73.420], label: 'Suffolk' }
     ];
 
     boroughs.forEach(function(b) {
       L.marker(b.latlng, { icon: omegaIcon(b.label) }).addTo(map);
     });
 
-    /* Mobile / tablet: fit all five markers into initial view */
-    if (!isDesktop) {
-      var bounds = L.latLngBounds(boroughs.map(function(b) { return b.latlng; }));
-      var pad = isTablet ? 55 : 50;
-      map.fitBounds(bounds, { padding: [pad, pad] });
-    }
+    /* All breakpoints: fit all five markers into initial view */
+    var bounds = L.latLngBounds(boroughs.map(function(b) { return b.latlng; }));
+    var pad = isDesktop ? 65 : (isTablet ? 55 : 50);
+    map.fitBounds(bounds, { padding: [pad, pad] });
   })();
 </script>
 
