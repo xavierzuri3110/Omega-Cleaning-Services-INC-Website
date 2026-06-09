@@ -2262,7 +2262,18 @@
   });
 
   // ══════════════════════════════════════════════
-  // 9. FORM SUBMIT
+  // 9. PHONE AUTO-FORMAT
+  // ══════════════════════════════════════════════
+  document.getElementById('phone').addEventListener('input', function (e) {
+    const digits = e.target.value.replace(/\D/g, '').slice(0, 10);
+    let formatted = '';
+    if (digits.length > 0) formatted = '(' + digits.slice(0, 3);
+    if (digits.length >= 4) formatted += ') ' + digits.slice(3, 6);
+    if (digits.length >= 7) formatted += '-' + digits.slice(6, 10);
+    e.target.value = formatted;
+  });
+
+  // 10. FORM SUBMIT
   // ══════════════════════════════════════════════
   function handleSubmit(e) {
     e.preventDefault();
