@@ -948,7 +948,12 @@
     }
 
     /* ── Desktop: narrow the Service Area left-column cards ── */
+    .hero-brand-mark { display: none; }
     @media (min-width: 1024px) {
+      .hero-brand-mark { display: flex; justify-content: center; margin-bottom: 2.5rem; }
+      #hero-content { padding-top: 0rem !important; }
+      .hero-brand-mark img { width: clamp(200px, 18vw, 240px); }
+      .hero-title { font-size: 3.5rem !important; }
       .area-left-card {
         margin-left: 5px !important;
         margin-right: 5px !important;
@@ -1115,6 +1120,12 @@
   <div id="particles" aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;"></div>
 
   <div id="hero-content" style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:5rem 1.5rem;">
+
+    <!-- Centered brand mark logo — desktop only -->
+    <div class="hero-brand-mark">
+      <img src="assets/omega_cleaning_logo_pt_2.png" alt="Omega Cleaning Services, Inc." style="height:auto;" />
+    </div>
+
     <div style="max-width:680px;margin-left:clamp(0px,6vw,80px);">
 
       <!-- Badge -->
