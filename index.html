@@ -1043,6 +1043,31 @@
     }
     .product-img-wrap { cursor: zoom-in; }
 
+    /* ── Hero side icon columns — desktop only (min-width: 1280px) ── */
+    .hero-icons-left, .hero-icons-right { display: none; }
+    @media (min-width: 1280px) {
+      .hero-icons-left {
+        display: flex; flex-direction: column; align-items: center;
+        position: absolute; left: 1.5vw; top: 160px; bottom: auto; margin: 0;
+        height: fit-content;
+        z-index: 2; width: clamp(190px, 16vw, 310px);
+      }
+      .hero-icons-right {
+        display: flex; flex-direction: column; align-items: center;
+        position: absolute; right: 1.5vw; top: 160px; bottom: auto; margin: 0;
+        height: fit-content;
+        z-index: 2; width: clamp(240px, 20vw, 350px);
+      }
+    }
+    .hero-icon-item { display: flex; flex-direction: column; align-items: center; padding: 1.31rem 0; width: 100%; text-align: center; }
+    .hero-icon-item svg { width: clamp(54px, 4.5vw, 78px); height: clamp(54px, 4.5vw, 78px); margin-bottom: 0.6rem; flex-shrink: 0; }
+    .hero-icon-label { color: #F5C518; font-size: clamp(0.825rem, 0.87vw, 1.08rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em; text-align: center; line-height: 1.35; }
+    .hero-icon-divider { width: 80%; height: 1px; background: rgba(245,197,24,0.3); flex-shrink: 0; }
+    .hero-promises-title { color: #F5C518; font-size: clamp(0.9rem, 0.975vw, 1.23rem); font-weight: 900; text-transform: uppercase; letter-spacing: 0.12em; text-align: center; width: 100%; margin-bottom: 0.9rem; }
+    .hero-promise-item { display: flex; flex-direction: column; align-items: center; padding: 1.31rem 0; width: 100%; }
+    .hero-promise-item svg { width: clamp(54px, 4.5vw, 78px); height: clamp(54px, 4.5vw, 78px); flex-shrink: 0; margin-bottom: 0.6rem; }
+    .hero-promise-label { color: #F5C518; font-size: clamp(0.825rem, 0.87vw, 1.08rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em; line-height: 1.35; text-align: center; }
+
   </style>
 </head>
 <body>
@@ -1172,6 +1197,62 @@
         <svg width="18" height="18" fill="#F5C518" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
         <span style="font-size:1.0625rem;font-weight:500;color:rgba(232,240,254,0.7);">Professional &amp; On-Time</span>
       </div>
+    </div>
+  </div>
+
+  <!-- Left hero icon column — desktop only -->
+  <div class="hero-icons-left" aria-hidden="true">
+    <div class="hero-icon-item">
+      <!-- Calendar -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="8" cy="15" r="0.75" fill="#F5C518"/><circle cx="12" cy="15" r="0.75" fill="#F5C518"/><circle cx="16" cy="15" r="0.75" fill="#F5C518"/>
+      </svg>
+      <span class="hero-icon-label">Free<br>Estimate</span>
+    </div>
+    <div class="hero-icon-divider"></div>
+    <div class="hero-icon-item">
+      <!-- Shield check -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
+      </svg>
+      <span class="hero-icon-label">Licensed &amp;<br>Insured</span>
+    </div>
+    <div class="hero-icon-divider"></div>
+    <div class="hero-icon-item">
+      <!-- Headset -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 12a9 9 0 0 1 18 0"/><rect x="2" y="12" width="3" height="6" rx="1.5"/><rect x="19" y="12" width="3" height="6" rx="1.5"/><path d="M22 18v1a3 3 0 0 1-3 3h-4"/>
+      </svg>
+      <span class="hero-icon-label">Always at<br>Your Service</span>
+    </div>
+  </div>
+
+  <!-- Right hero icon column — desktop only -->
+  <div class="hero-icons-right" aria-hidden="true">
+    <div class="hero-promises-title">Our Promises</div>
+    <div class="hero-icon-divider"></div>
+    <div class="hero-promise-item">
+      <!-- Handshake (Phosphor Icons — phosphoricons.com, MIT) -->
+      <svg viewBox="0 0 256 256" fill="#F5C518" xmlns="http://www.w3.org/2000/svg">
+        <path d="M254.3,107.91,228.78,56.85a16,16,0,0,0-21.47-7.15L182.44,62.13,130.05,48.27a8.14,8.14,0,0,0-4.1,0L73.56,62.13,48.69,49.7a16,16,0,0,0-21.47,7.15L1.7,107.9a16,16,0,0,0,7.15,21.47l27,13.51,55.49,39.63a8.06,8.06,0,0,0,2.71,1.25l64,16a8,8,0,0,0,7.6-2.1l55.07-55.08,26.42-13.21a16,16,0,0,0,7.15-21.46Zm-54.89,33.37L165,113.72a8,8,0,0,0-10.68.61C136.51,132.27,116.66,130,104,122L147.24,80h31.81l27.21,54.41ZM41.53,64,62,74.22,36.43,125.27,16,115.06Zm116,119.13L99.42,168.61l-49.2-35.14,28-56L128,64.28l9.8,2.59-45,43.68-.08.09a16,16,0,0,0,2.72,24.81c20.56,13.13,45.37,11,64.91-5L188,152.66Zm62-57.87-25.52-51L214.47,64,240,115.06Zm-87.75,92.67a8,8,0,0,1-7.75,6.06,8.13,8.13,0,0,1-1.95-.24L80.41,213.33a7.89,7.89,0,0,1-2.71-1.25L51.35,193.26a8,8,0,0,1,9.3-13l25.11,17.94L126,208.24A8,8,0,0,1,131.82,217.94Z"/>
+      </svg>
+      <span class="hero-promise-label">Reliability</span>
+    </div>
+    <div class="hero-icon-divider"></div>
+    <div class="hero-promise-item">
+      <!-- Thumbs up -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 10v12M15 5.88L14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88z"/>
+      </svg>
+      <span class="hero-promise-label">Quality Assured</span>
+    </div>
+    <div class="hero-icon-divider"></div>
+    <div class="hero-promise-item">
+      <!-- Circular arrows -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>
+      </svg>
+      <span class="hero-promise-label">Consistency</span>
     </div>
   </div>
 
