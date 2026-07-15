@@ -977,6 +977,29 @@
       .pkg-card p { font-size: 1rem !important; }
     }
 
+    /* ══════════════════════════════════════
+       LARGE DESKTOP (≥1440px) — fills wider
+       screens like 1920px without looking
+       narrow and under-scaled
+    ══════════════════════════════════════ */
+    @media (min-width: 1440px) {
+      /* Expand all content containers from 1200px to 1400px */
+      [style*="max-width:1200px"] { max-width: 1400px !important; }
+
+      /* Scale up hero title */
+      .hero-title { font-size: 4rem !important; }
+
+      /* Scale up all section headings */
+      .vcr-section-title { font-size: 3.5rem !important; }
+
+      /* Widen hero content block to match container */
+      #hero-content { max-width: 1400px !important; }
+
+      /* Lock auto-fit grids to 3 columns — prevents reflow to 4 on wider containers */
+      #services [style*="minmax(320px"] { grid-template-columns: repeat(3, 1fr) !important; }
+      #testimonials [style*="minmax(320px"] { grid-template-columns: repeat(3, 1fr) !important; }
+    }
+
     /* ── Service Areas: align map card bottom with "Beyond These Areas" card (tablet+) ── */
     @media (min-width: 768px) {
       #areas > div > div[style*="grid-template-columns"] {
