@@ -998,6 +998,18 @@
       /* Lock auto-fit grids to 3 columns — prevents reflow to 4 on wider containers */
       #services [style*="minmax(320px"] { grid-template-columns: repeat(3, 1fr) !important; }
       #testimonials [style*="minmax(320px"] { grid-template-columns: repeat(3, 1fr) !important; }
+
+      /* Tailored Commercial Solutions — bump subtitle text for large desktop */
+      #services [style*="max-width:540px"] { font-size: 1.25rem !important; }
+
+      /* Photo captions — bump from 0.875rem to 1rem for large desktop */
+      .photo-caption { font-size: 1rem !important; }
+
+      /* Why Omega body paragraphs — bump from 1rem to 1.125rem for large desktop */
+      #why-us p[style*="font-size:1rem"] { font-size: 1.125rem !important; }
+
+      /* Service Areas body paragraphs — bump from 1rem to 1.125rem for large desktop */
+      #areas p[style*="font-size:1rem"] { font-size: 1.125rem !important; }
     }
 
     /* ── Service Areas: align map card bottom with "Beyond These Areas" card (tablet+) ── */
